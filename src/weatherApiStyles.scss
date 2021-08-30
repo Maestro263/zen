@@ -1,0 +1,27 @@
+.weather-info {
+  p {
+    font-size: 16pt;
+  }
+}
+.search-area {
+  display: flex;
+  flex-direction: column;
+  input,
+  button {
+    width: 30%;
+    height: 40px;
+    background-color: white;
+    font-size: 1rem;
+    color: black;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+  }
+  button {
+    background-color: rgb(241, 160, 8);
+  }
+  button:hover {
+    cursor: pointer;
+  }
+}

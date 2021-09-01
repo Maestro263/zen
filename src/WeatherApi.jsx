@@ -6,6 +6,12 @@ const WeatherApi = () => {
     setGetState(event.target.value);
   };
 
+  const searchWeather = (event) => {
+    if (event.charCode === 13) {
+      submitHandler();
+    }
+  };
+
   const submitHandler = () => {
     setState(getState);
   };
@@ -20,7 +26,7 @@ const WeatherApi = () => {
 
   useEffect(() => {
     let key = process.env.REACT_APP_API_KEY;
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${state}&APPID=${key}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${state}&APPID=${key}`;
     fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => setApiData(data));
@@ -35,6 +41,7 @@ const WeatherApi = () => {
           id="location-name"
           placeholder="Search for a city"
           onChange={inputHandler}
+          onKeyPress={searchWeather}
           value={getState}
         />
         <button onClick={submitHandler}>Search</button>
@@ -44,7 +51,7 @@ const WeatherApi = () => {
         {apiData.main ? (
           <div>
             <img
-              src={`http://openweathermap.org/img/w/${apiData.weather[0].icon}.png`}
+              src={`https://openweathermap.org/img/w/${apiData.weather[0].icon}.png`}
               alt="weather icon"
               className="weather-icon"
             />
@@ -74,7 +81,7 @@ const WeatherApi = () => {
             </div>
           </div>
         ) : (
-          <h1>Loading</h1>
+          <h1>Error</h1>
         )}
       </div>
     </div>
